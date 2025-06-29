@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Exclude imageuploads folder from rewrite
+RewriteRule ^imageuploads/ - [L]
+
+# If the requested file or directory exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, route to index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
